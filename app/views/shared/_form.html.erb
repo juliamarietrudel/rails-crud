@@ -1,0 +1,28 @@
+<%# The same partial creates a new record or updates an existing one. %>
+<%# form_with chooses the URL and HTTP method from the record's saved state. %>
+<%= form_with model: restaurant do |f| %>
+  <% if restaurant.errors.any? %>
+    <div role="alert">
+      <h2>Please correct the following errors:</h2>
+      <ul>
+        <% restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+  </div>
+  <%= f.submit %>
+<% end %>

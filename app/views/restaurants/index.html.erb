@@ -1,0 +1,15 @@
+<h1>Restaurants</h1>
+
+<%= link_to "Add a restaurant", new_restaurant_path %>
+
+<ol>
+  <% @restaurants.each do |restaurant| %>
+    <li>
+      <%= link_to restaurant.name, restaurant_path(restaurant) %>
+      <%= link_to "Edit", edit_restaurant_path(restaurant) %>
+      <%# Turbo sends DELETE and asks for confirmation before removing the record. %>
+      <%= link_to "Delete", restaurant_path(restaurant),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this restaurant?" } %>
+    </li>
+  <% end %>
+</ol>
